@@ -1,0 +1,6 @@
+<md-sidenav md-is-open="false" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" class="md-primary" layout="column" layout-align="top stretch" flex-xs="100" flex-sm="noshrink" flex-gt-sm="20" ng-swipe-left="closeSidenav()" md-disable-scroll-target="false">
+    <search search-data="searchData"></search>
+</md-sidenav>
+<md-content flex layout="row" layout-align="center stretch" ng-swipe-right="openSidenav()">
+    <post-list flex search-data="searchData" layout="column" layout-align="none stretch" ></post-list>
+</md-content>

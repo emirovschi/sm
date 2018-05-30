@@ -1,0 +1,29 @@
+<md-content class="content" flex layout="row" layout-align="center start">
+    <md-whiteframe class="md-whiteframe-3dp no-max-height" flex="90" flex-gt-xs="75" flex-gt-sm="50" flex-gt-md="40">
+        <h2>Account settings</h2>
+        <form name="accountForm" role="form" ng-submit="update()" flex layout="column" layout-align="start stertch">
+            <md-input-container>
+                <label>Name</label>
+                <input ng-model="user.name" type="text" name="name" ng-disabled="isLoading" />
+                <div ng-messages="accountForm.name.$error">
+                    <div ng-message="Size">The name should be between 3 and 100 characters</div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <label>Password</label>
+                <input ng-model="user.password" type="password" name="password" ng-disabled="isLoading" />
+                <div ng-messages="accountForm.password.$error">
+                    <div ng-message="Size">The password should have at least 6 characters</div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <label>Repeat password</label>
+                <input ng-model="user.password2" type="password" name="password2" ng-disabled="isLoading" />
+                <div ng-messages="accountForm.password2.$error">
+                    <div ng-message="Equals">The passwords do not match</div>
+                </div>
+            </md-input-container>
+            <md-button class="md-flex md-primary md-raised full-width" ng-disabled="isLoading" type="submit">Update</md-button>
+        </form>
+    </md-whiteframe>
+</md-content>

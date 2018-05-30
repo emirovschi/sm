@@ -1,0 +1,29 @@
+<md-content class="content" flex layout="row" layout-align="center start">
+    <md-whiteframe class="md-whiteframe-3dp no-max-height" flex="90" flex-gt-xs="75" flex-gt-sm="50" flex-gt-md="40">
+        <h2>Upload</h2>
+        <form name="uploadForm" role="form" ng-submit="upload()" flex layout="column" layout-align="start stertch">
+            <md-input-container class="hide-error">
+                <label>Title</label>
+                <input ng-model="post.title" type="text" name="username" ng-disabled="isLoading" />
+            </md-input-container>
+            <md-chips readonly="isLoading" ng-model="post.tags" md-autocomplete-snap md-separator-keys="keys">
+                <md-autocomplete md-selected-item="selectedItem"  md-search-text="searchText"
+                                 md-items="item in querySearch(searchText)" md-item-text="item" placeholder="Tags">
+                    <span md-highlight-text="searchText">{{item}}</span>
+                </md-autocomplete>
+                <md-chip-template>
+                    <span>{{$chip}}</span>
+                </md-chip-template>
+            </md-chips>
+            <div class="preview">
+                <lf-ng-md-file-input lf-files="files" progress accept="image/jpeg, image/png, video/*, audio/*" ng-disabled="isLoading"></lf-ng-md-file-input>
+                <img ng-if="previewType === 'image'" ng-src="{{previewUrl}}" class="md-card-image"/>
+                <video ng-if="previewType === 'video'" ng-src="{{previewUrl}}" class="md-card-image" controls>
+                </video>
+                <audio ng-if="previewType === 'audio'" ng-src="{{previewUrl}}" class="md-card-image" controls>
+                </audio>
+            </div>
+            <md-button class="md-flex md-primary md-raised full-width" ng-disabled="isLoading || notReady" type="submit">Upload</md-button>
+        </form>
+    </md-whiteframe>
+</md-content>

@@ -1,0 +1,96 @@
+<html lang="en" >
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.1/angular-material.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/js/lib/upload/lf-ng-md-file-input.css">
+    <base href="/">
+</head>
+<body ng-app="App" layout="column">
+
+    <div ng-controller="index" layout="column" flex>
+
+        <md-toolbar class="md-hue-2" md-theme="login">
+            <div class="md-toolbar-tools">
+                <md-button class="md-icon-button" hide-gt-md ng-click="openSidenav()">
+                    <md-icon><i class="material-icons">more_vert</i></md-icon>
+                </md-button>
+                <h2>
+                    <span><a ng-href="/">Site</a></span>
+                </h2>
+                <span flex=""></span>
+                <div ng-if="!logged()">
+                    <md-button class="md-raised" id="login" ng-click="openLogIn()">Log In</md-button>
+                    <md-button class="md-primary" id="signup" ng-click="openSignUp()">Sign Up</md-button>
+                </div>
+                <div ng-if="logged()" layout="row" layout-align="center center">
+                    <md-button class="md-icon-button" ng-href="/upload">
+                        <md-icon><i class="material-icons">file_upload</i></md-icon>
+                    </md-button>
+                    <md-menu md-position-mode="target-right target" md-offset="4 -8" md-theme="default">
+                        <md-button class="md-toolbar-avatar md-fab md-mini" ng-click="openMenu($mdOpenMenu, $event)">
+                            <img flex ng-src="/users/{{user.id}}/avatar?r={{user.random}}" />
+                        </md-button>
+                        <md-menu-content width="4" class="md-avatar">
+                            <md-menu-item>
+                                <div layout="row">
+                                    <div layout="column" class="md-menu-title">
+                                        <span class="md-title">{{user.name}}</span>
+                                        <span class="md-subhead">{{user.email}}</span>
+                                    </div>
+                                    <span flex></span>
+                                    <md-button class="md-toolbar-avatar md-fab md-mini" ng-disabled="true">
+                                        <img ng-click="" flex ng-src="/users/{{user.id}}/avatar" />
+                                    </md-button>
+                                </div>
+                            </md-menu-item>
+                            <md-menu-divider></md-menu-divider>
+                            <md-menu-item>
+                                <md-button ng-href="/account">
+                                    <md-icon><i class="material-icons">account_circle</i></md-icon>
+                                    Account settings
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button ng-click="logout()">
+                                    <md-icon><i class="material-icons">exit_to_app</i></md-icon>
+                                    Log out
+                                </md-button>
+                            </md-menu-item>
+                        </md-menu-content>
+                    </md-menu>
+
+                </div>
+            </div>
+        </md-toolbar>
+
+        <div layout="row" ng-view flex></div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.1/angular-material.js"></script>
+    <script src="/js/lib/angular-swipe.js"></script>
+    <script src="/js/lib/upload/lf-ng-md-file-input.js"></script>
+    <script src="/js/lib/angular-vs-repeat.js"></script>
+    <script src="/js/module.js"></script>
+    <script src="/js/router.js"></script>
+    <script src="/js/services/tags.js"></script>
+    <script src="/js/services/posts.js"></script>
+    <script src="/js/services/users.js"></script>
+    <script src="/js/services/auth.js"></script>
+    <script src="/js/directives/colorChip.js"></script>
+    <script src="/js/directives/search.js"></script>
+    <script src="/js/directives/postList.js"></script>
+    <script src="/js/controllers/login.js"></script>
+    <script src="/js/controllers/signup.js"></script>
+    <script src="/js/controllers/index.js"></script>
+    <script src="/js/controllers/home.js"></script>
+    <script src="/js/controllers/upload.js"></script>
+    <script src="/js/controllers/account.js"></script>
+</body>
+</html>

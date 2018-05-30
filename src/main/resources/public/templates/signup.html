@@ -1,0 +1,55 @@
+<md-dialog flex="90" flex-gt-xs="75" flex-gt-sm="50" flex-gt-md="30">
+    <form ng-cloak name="signupForm" role="form" ng-submit="signup()">
+        <md-toolbar class="md-primary md-hue-2" md-theme="login">
+            <div class="md-toolbar-tools">
+                <h2>Sign Up</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="close()">
+                    <md-icon><i class="material-icons">close</i></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <div class="md-dialog-content" layout="column" layout-align="start stretch">
+                <md-input-container class="md-block">
+                    <label>Name</label>
+                    <input ng-model="registerData.name" name="name" type="text" ng-disabled="isLoading()" />
+                    <div ng-messages="signupForm.name.$error">
+                        <div ng-message="NotNull">Please enter a name</div>
+                        <div ng-message="Size">The name should be between 3 and 100 characters</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Email</label>
+                    <input ng-model="registerData.email" name="email" type="text" ng-disabled="isLoading()" />
+                    <div ng-messages="signupForm.email.$error">
+                        <div ng-message="NotNull">Please enter an email address</div>
+                        <div ng-message="Pattern">Please enter a valid email address</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Password</label>
+                    <input ng-model="registerData.password" type="password" name="password" autocomplete="new-password" ng-disabled="isLoading()" />
+                    <div ng-messages="signupForm.password.$error">
+                        <div ng-message="NotNull">Please provide a password</div>
+                        <div ng-message="Size">The password should have at least 6 characters</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Repeat password</label>
+                    <input ng-model="registerData.password2" type="password" name="password2" ng-disabled="isLoading()" />
+                    <div ng-messages="signupForm.password2.$error">
+                        <div ng-message="NotNull">Please repeat the password</div>
+                        <div ng-message="Equals">The passwords do not match</div>
+                    </div>
+                </md-input-container>
+            </div>
+        </md-dialog-content>
+
+        <md-dialog-actions>
+            <md-button flex class="md-flex md-primary md-raised md-hue-2" ng-disabled="isLoading()" type="submit">Sign Up</md-button>
+        </md-dialog-actions>
+    </form>
+    <md-progress-linear md-mode="intermediate" ng-show="isLoading()"></md-progress-linear>
+</md-dialog>

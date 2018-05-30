@@ -1,0 +1,24 @@
+<div layout="row" layout-align="center start">
+    <md-input-container class="hide-error-message" flex="90">
+        <label>Search tags</label>
+        <input type="text" autocomplete="off" ng-model="searchData.query" ng-change="search()" />
+    </md-input-container>
+</div>
+<md-chips ng-if="searchData.tags.length != 0" ng-model="searchData.tags" readonly="true" md-removable="true">
+    <md-chip-template color-chip chip-add="$chip.add">
+        {{$chip.name}}
+    </md-chip-template>
+</md-chips>
+<md-content flex>
+    <md-list ng-cloak>
+        <md-list-item ng-repeat="tag in result">
+            <p>{{tag.name}}</p>
+            <md-button class="md-icon-button md-primary" md-theme="success" ng-click="add(tag.name)">
+                <md-icon><i class="material-icons">add_circle</i></md-icon>
+            </md-button>
+            <md-button class="md-icon-button md-primary" md-theme="error" ng-click="exclude(tag.name)">
+                <md-icon><i class="material-icons">remove_circle</i></md-icon>
+            </md-button>
+        </md-list-item>
+    </md-list>
+</md-content>
